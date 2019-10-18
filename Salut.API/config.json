@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "SalutDB": "Server=localhost;userid=root; password=admin; database=SalutDB;"
+  }
+}
