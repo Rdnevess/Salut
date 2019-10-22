@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salut.Infra.Data.Context;
 
 namespace Salut.Infra.Data.Migrations
 {
     [DbContext(typeof(SalutContext))]
-    partial class SalutContextModelSnapshot : ModelSnapshot
+    [Migration("20191021220327_AdicionandoStatusRelacionamento")]
+    partial class AdicionandoStatusRelacionamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
