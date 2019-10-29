@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salut.Infra.Data.Context;
 
 namespace Salut.Infra.Data.Migrations
 {
     [DbContext(typeof(SalutContext))]
-    partial class SalutContextModelSnapshot : ModelSnapshot
+    [Migration("20191025153549_AddRelacionamentoUsuarioGrupo")]
+    partial class AddRelacionamentoUsuarioGrupo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,7 @@ namespace Salut.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Grupos");
+                    b.ToTable("Grupo");
                 });
 
             modelBuilder.Entity("Salut.Domain.Entities.Identificacao", b =>
@@ -142,7 +144,7 @@ namespace Salut.Infra.Data.Migrations
 
                     b.HasIndex("GrupoId");
 
-                    b.ToTable("UsuarioGrupos");
+                    b.ToTable("UsuarioGrupo");
                 });
 
             modelBuilder.Entity("Salut.Domain.Entities.Identificacao", b =>

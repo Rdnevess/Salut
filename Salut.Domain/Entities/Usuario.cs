@@ -1,5 +1,6 @@
 ﻿using Salut.Domain.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace Salut.Domain.Entities {
     public class Usuario {
@@ -11,6 +12,9 @@ namespace Salut.Domain.Entities {
         public DateTime DataNascimento { get; set; }
         public SexoEnum Sexo { get; set; }
         public string UrlFoto { get; set; }
+        public virtual Identificacao Identificacao { get; set; }
+        public virtual ICollection<Postagem> Postagens{ get; set; }
+        public virtual ICollection<UsuarioGrupo> UsuarioGrupos { get; set; }
 
     }
 }
