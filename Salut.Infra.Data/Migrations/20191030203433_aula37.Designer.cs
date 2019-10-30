@@ -9,8 +9,8 @@ using Salut.Infra.Data.Context;
 namespace Salut.Infra.Data.Migrations
 {
     [DbContext(typeof(SalutContext))]
-    [Migration("20191025154051_AddDbSet")]
-    partial class AddDbSet
+    [Migration("20191030203433_aula37")]
+    partial class aula37
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,6 +18,44 @@ namespace Salut.Infra.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Salut.Domain.Entities.Amigo", b =>
+                {
+                    b.Property<int>("UsuarioId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("UsuarioId1");
+
+                    b.HasKey("UsuarioId");
+
+                    b.HasIndex("UsuarioId1");
+
+                    b.ToTable("Amigos");
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.Comentario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataPublicacao");
+
+                    b.Property<int?>("PostagemId");
+
+                    b.Property<string>("Texto")
+                        .IsRequired()
+                        .HasMaxLength(600);
+
+                    b.Property<int>("UsuarioId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostagemId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Comentarios");
+                });
 
             modelBuilder.Entity("Salut.Domain.Entities.Grupo", b =>
                 {
@@ -60,6 +98,46 @@ namespace Salut.Infra.Data.Migrations
                     b.ToTable("Identificacao");
                 });
 
+            modelBuilder.Entity("Salut.Domain.Entities.InstituicaoEnsino", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("AnoFormacao");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<int>("UsuarioId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("InstituicoesEnsino");
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.LocalTrabalho", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataAdmissao");
+
+                    b.Property<DateTime?>("DataSaida");
+
+                    b.Property<bool>("EmpresaAtual");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<int>("UsuarioId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("LocaisTrabalho");
+                });
+
             modelBuilder.Entity("Salut.Domain.Entities.Postagem", b =>
                 {
                     b.Property<int>("Id")
@@ -73,6 +151,8 @@ namespace Salut.Infra.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(400);
 
+                    b.Property<string>("UrlConteudo");
+
                     b.Property<int>("UsuarioId");
 
                     b.HasKey("Id");
@@ -82,6 +162,25 @@ namespace Salut.Infra.Data.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Postagens");
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.ProcurandoPor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descricao");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProcurandoPor");
+
+                    b.HasData(
+                        new { Id = 1, Descricao = "Namoro" },
+                        new { Id = 2, Descricao = "Amizade" },
+                        new { Id = 3, Descricao = "NaoEspecificado" },
+                        new { Id = 4, Descricao = "RelacionamentoSerio" }
+                    );
                 });
 
             modelBuilder.Entity("Salut.Domain.Entities.StatusRelacionamento", b =>
@@ -94,6 +193,13 @@ namespace Salut.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StatusRelacionamento");
+
+                    b.HasData(
+                        new { Id = 1, Descricao = "NaoEspecificado" },
+                        new { Id = 2, Descricao = "Solteiro" },
+                        new { Id = 3, Descricao = "Casado" },
+                        new { Id = 4, Descricao = "EmRelacionamentoSerio" }
+                    );
                 });
 
             modelBuilder.Entity("Salut.Domain.Entities.Usuario", b =>
@@ -111,6 +217,8 @@ namespace Salut.Infra.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(400);
 
+                    b.Property<int?>("ProcurandoPorId");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(400);
@@ -121,11 +229,17 @@ namespace Salut.Infra.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(400);
 
+                    b.Property<int?>("StatusRelacionamentoId");
+
                     b.Property<string>("UrlFoto")
                         .IsRequired()
                         .HasMaxLength(400);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProcurandoPorId");
+
+                    b.HasIndex("StatusRelacionamentoId");
 
                     b.ToTable("Usuarios");
                 });
@@ -147,11 +261,46 @@ namespace Salut.Infra.Data.Migrations
                     b.ToTable("UsuarioGrupos");
                 });
 
+            modelBuilder.Entity("Salut.Domain.Entities.Amigo", b =>
+                {
+                    b.HasOne("Salut.Domain.Entities.Usuario", "Usuario")
+                        .WithMany("Amigos")
+                        .HasForeignKey("UsuarioId1");
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.Comentario", b =>
+                {
+                    b.HasOne("Salut.Domain.Entities.Postagem")
+                        .WithMany("Comentarios")
+                        .HasForeignKey("PostagemId");
+
+                    b.HasOne("Salut.Domain.Entities.Usuario", "Usuario")
+                        .WithMany("Comentarios")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Salut.Domain.Entities.Identificacao", b =>
                 {
                     b.HasOne("Salut.Domain.Entities.Usuario", "Usuario")
                         .WithOne("Identificacao")
                         .HasForeignKey("Salut.Domain.Entities.Identificacao", "UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.InstituicaoEnsino", b =>
+                {
+                    b.HasOne("Salut.Domain.Entities.Usuario", "Usuario")
+                        .WithMany("InstituicoesEnsino")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.LocalTrabalho", b =>
+                {
+                    b.HasOne("Salut.Domain.Entities.Usuario", "Usuario")
+                        .WithMany("LocaisTrabalho")
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -166,6 +315,17 @@ namespace Salut.Infra.Data.Migrations
                         .WithMany("Postagens")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Salut.Domain.Entities.Usuario", b =>
+                {
+                    b.HasOne("Salut.Domain.Entities.ProcurandoPor", "ProcurandoPor")
+                        .WithMany()
+                        .HasForeignKey("ProcurandoPorId");
+
+                    b.HasOne("Salut.Domain.Entities.StatusRelacionamento", "StatusRelacionamento")
+                        .WithMany()
+                        .HasForeignKey("StatusRelacionamentoId");
                 });
 
             modelBuilder.Entity("Salut.Domain.Entities.UsuarioGrupo", b =>

@@ -2,31 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salut.Infra.Data.Context;
 
 namespace Salut.Infra.Data.Migrations
 {
     [DbContext(typeof(SalutContext))]
-    partial class SalutContextModelSnapshot : ModelSnapshot
+    [Migration("20191030200753_Anterior35")]
+    partial class Anterior35
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("Salut.Domain.Entities.Amigo", b =>
-                {
-                    b.Property<int>("UsuarioId");
-
-                    b.Property<int>("UsuarioAmigoId");
-
-                    b.HasKey("UsuarioId", "UsuarioAmigoId");
-
-                    b.ToTable("Amigos");
-                });
 
             modelBuilder.Entity("Salut.Domain.Entities.Comentario", b =>
                 {
@@ -254,14 +245,6 @@ namespace Salut.Infra.Data.Migrations
                     b.HasIndex("GrupoId");
 
                     b.ToTable("UsuarioGrupos");
-                });
-
-            modelBuilder.Entity("Salut.Domain.Entities.Amigo", b =>
-                {
-                    b.HasOne("Salut.Domain.Entities.Usuario", "Usuario")
-                        .WithMany("Amigos")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Salut.Domain.Entities.Comentario", b =>

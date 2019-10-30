@@ -16,6 +16,7 @@ namespace Salut.Infra.Data.Config {
             builder.HasOne(u => u.Identificacao)
                 .WithOne(i => i.Usuario)
                 .HasForeignKey<Identificacao>(i => i.UsuarioId);
+            builder.HasMany(u => u.Comentarios).WithOne(c => c.Usuario);
         }
     }
 }
