@@ -19,15 +19,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - CrossCutting", "2.1 -
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2 - Data", "2.2 - Data", "{475C59FB-986A-4212-8A1F-66E196723B27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salut.Domain", "Salut.Domain\Salut.Domain.csproj", "{1452053B-8F8B-4508-8CDD-DD54CEF4AE01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salut.Domain", "Salut.Domain\Salut.Domain.csproj", "{1452053B-8F8B-4508-8CDD-DD54CEF4AE01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salut.Domain.Teste", "Salut.Domain.Teste\Salut.Domain.Teste.csproj", "{FB5B5481-CDA9-435E-B0DB-DFBA5F38A108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salut.Domain.Teste", "Salut.Domain.Teste\Salut.Domain.Teste.csproj", "{FB5B5481-CDA9-435E-B0DB-DFBA5F38A108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salut.Infra.Data", "Salut.Infra.Data\Salut.Infra.Data.csproj", "{4CAF804E-1C05-4227-8E1A-F0754D33183F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salut.Infra.Data", "Salut.Infra.Data\Salut.Infra.Data.csproj", "{4CAF804E-1C05-4227-8E1A-F0754D33183F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salut.Application", "Salut.Application\Salut.Application.csproj", "{1096B9EB-694E-4034-85D4-9BB2E12E5F16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salut.Application", "Salut.Application\Salut.Application.csproj", "{1096B9EB-694E-4034-85D4-9BB2E12E5F16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salut.API", "Salut.API\Salut.API.csproj", "{59CDF902-4355-4A63-97CA-36C89CBCDECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salut.API", "Salut.API\Salut.API.csproj", "{59CDF902-4355-4A63-97CA-36C89CBCDECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalutApp", "SalutApp\SalutApp.csproj", "{5C2D9782-FE61-473D-8FBE-966BDCD27EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salut.Infra.CrossCutting.Logging", "Salut.Infra.CrossCutting.Logging\Salut.Infra.CrossCutting.Logging.csproj", "{3C5C3DA0-4AD2-431C-B262-B2840748538D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,14 @@ Global
 		{59CDF902-4355-4A63-97CA-36C89CBCDECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59CDF902-4355-4A63-97CA-36C89CBCDECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59CDF902-4355-4A63-97CA-36C89CBCDECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2D9782-FE61-473D-8FBE-966BDCD27EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2D9782-FE61-473D-8FBE-966BDCD27EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2D9782-FE61-473D-8FBE-966BDCD27EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2D9782-FE61-473D-8FBE-966BDCD27EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5C3DA0-4AD2-431C-B262-B2840748538D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5C3DA0-4AD2-431C-B262-B2840748538D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5C3DA0-4AD2-431C-B262-B2840748538D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5C3DA0-4AD2-431C-B262-B2840748538D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +79,8 @@ Global
 		{4CAF804E-1C05-4227-8E1A-F0754D33183F} = {475C59FB-986A-4212-8A1F-66E196723B27}
 		{1096B9EB-694E-4034-85D4-9BB2E12E5F16} = {390D12C0-4933-49B4-90FD-82BA3CECF3D7}
 		{59CDF902-4355-4A63-97CA-36C89CBCDECE} = {AEAF87D3-6569-4C0C-9632-6A514DC84F05}
+		{5C2D9782-FE61-473D-8FBE-966BDCD27EEA} = {98E8A224-96A7-4A57-B059-B5C2F0FE16CA}
+		{3C5C3DA0-4AD2-431C-B262-B2840748538D} = {BD76350B-31C0-45E2-9D02-4401F5863FD9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9EB6C4B-789B-4F38-84F4-8BB0776E3B2E}

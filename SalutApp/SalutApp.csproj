@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Salut.Domain\Salut.Domain.csproj" />
+    <ProjectReference Include="..\Salut.Infra.CrossCutting.Logging\Salut.Infra.CrossCutting.Logging.csproj" />
+    <ProjectReference Include="..\Salut.Infra.Data\Salut.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
