@@ -15,7 +15,7 @@ namespace SalutApp {
             var optionsBuilder = new DbContextOptionsBuilder<SalutContext>();
             optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseMySql("Server=localhost;userid=root; password=admin; database=SalutDB;", m => m.MigrationsAssembly("Salut.Infra.Data"));
-            //optionsBuilder.EnableSensitiveDataLogging;
+            optionsBuilder.EnableSensitiveDataLogging();
 
             try {
                 using (var dbcontext = new SalutContext(optionsBuilder.Options)) {
@@ -38,7 +38,7 @@ namespace SalutApp {
                 }
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro: " + ex.Message);
                 Console.ReadKey();
             }
             Console.WriteLine("OK");
